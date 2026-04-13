@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="24dp"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Child Dashboard"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="30dp" />
+
+    <EditText
+        android:id="@+id/etVideoTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Video Title"
+        android:layout_marginBottom="20dp" />
+
+    <Button
+        android:id="@+id/btnSendActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Test Activity"
+        android:layout_marginBottom="20dp" />
+
+    <Button
+        android:id="@+id/btnOpenPermission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enable Usage Permission" />
+
+</LinearLayout>
