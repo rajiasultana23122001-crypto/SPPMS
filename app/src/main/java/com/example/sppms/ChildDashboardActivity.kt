@@ -1,8 +1,11 @@
 package com.example.sppms
 
+import android.Manifest
+import android.app.usage.UsageStatsManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.media.MediaMetadata
 import android.media.session.MediaController
 import android.media.session.MediaSessionManager
@@ -15,7 +18,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import android.app.usage.UsageStatsManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -25,9 +30,13 @@ class ChildDashboardActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     private val handler = Handler(Looper.getMainLooper())
+    private val locationPermissionCode = 1001
 
     private var lastApp = ""
     private var startTime = 0L
+
+    private var currentLatitude: Double? = null
+    private var currentLongitude: Double? = null
 
     private lateinit var tvCurrentStatus: TextView
     private lateinit var btnPermission: Button
@@ -38,6 +47,8 @@ class ChildDashboardActivity : AppCompatActivity() {
             val user = auth.currentUser
 
             if (user != null) {
+                checkLocationPermissionAndFetch()
+
                 val currentPackage = getLastUsedTrackedPackage()
                 val currentApp = getReadableAppName(currentPackage)
                 val currentTime = System.currentTimeMillis()
@@ -75,6 +86,7 @@ class ChildDashboardActivity : AppCompatActivity() {
             startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
         }
 
+        checkLocationPermissionAndFetch()
         handler.postDelayed(autoTracker, 3000)
     }
 
@@ -94,7 +106,7 @@ class ChildDashboardActivity : AppCompatActivity() {
                 val videoTitle = detectCurrentVideoTitle(currentPackage)
                 val category = classifyVideo(videoTitle)
 
-                val data = hashMapOf(
+                val data = hashMapOf<String, Any>(
                     "appUsage" to currentApp,
                     "packageName" to currentPackage,
                     "watchTime" to "${durationSec} sec",
@@ -105,14 +117,36 @@ class ChildDashboardActivity : AppCompatActivity() {
                     "lastUpdated" to System.currentTimeMillis()
                 )
 
+                currentLatitude?.let { data["latitude"] = it }
+                currentLongitude?.let { data["longitude"] = it }
+                data["locationUpdatedAt"] = System.currentTimeMillis()
+
                 db.collection("users").document(user.uid)
                     .update(data as Map<String, Any>)
                     .addOnSuccessListener {
+                        saveUsageLog(
+                            childUid = user.uid,
+                            childName = childName,
+                            childEmail = childEmail,
+                            currentApp = currentApp,
+                            videoTitle = videoTitle,
+                            category = category,
+                            durationSec = durationSec
+                        )
+
+                        val locationText =
+                            if (currentLatitude != null && currentLongitude != null) {
+                                "${currentLatitude}, ${currentLongitude}"
+                            } else {
+                                "Location not available"
+                            }
+
                         tvCurrentStatus.text = """
                             Current App: $currentApp
                             Video Title: $videoTitle
                             Category: $category
                             Time: ${durationSec} sec
+                            Location: $locationText
                         """.trimIndent()
                     }
                     .addOnFailureListener {
@@ -121,10 +155,43 @@ class ChildDashboardActivity : AppCompatActivity() {
             }
     }
 
+    private fun saveUsageLog(
+        childUid: String,
+        childName: String,
+        childEmail: String,
+        currentApp: String,
+        videoTitle: String,
+        category: String,
+        durationSec: Long
+    ) {
+        val logData = hashMapOf<String, Any>(
+            "childUid" to childUid,
+            "childName" to childName,
+            "childEmail" to childEmail,
+            "appUsage" to currentApp,
+            "videoTitle" to videoTitle,
+            "category" to category,
+            "durationSec" to durationSec,
+            "timestamp" to System.currentTimeMillis()
+        )
+
+        currentLatitude?.let { logData["latitude"] = it }
+        currentLongitude?.let { logData["longitude"] = it }
+
+        db.collection("usage_logs")
+            .add(logData)
+            .addOnSuccessListener {
+                Log.d("PARENTRAL_LOG", "Usage log saved")
+            }
+            .addOnFailureListener {
+                Log.e("PARENTRAL_LOG", "Failed to save usage log")
+            }
+    }
+
     private fun detectCurrentVideoTitle(currentPackage: String): String {
         val mediaTitle = getMediaSessionTitle(currentPackage)
         if (mediaTitle.isNotBlank() && !isSystemText(mediaTitle)) {
-            Log.d("SPPMS_TITLE", "From MediaSession: $mediaTitle")
+            Log.d("PARENTRAL_TITLE", "From MediaSession: $mediaTitle")
             return mediaTitle
         }
 
@@ -134,12 +201,12 @@ class ChildDashboardActivity : AppCompatActivity() {
 
         if (notifPackage == currentPackage) {
             if (notifTitle.isNotBlank() && !isSystemText(notifTitle)) {
-                Log.d("SPPMS_TITLE", "From Notification Title: $notifTitle")
+                Log.d("PARENTRAL_TITLE", "From Notification Title: $notifTitle")
                 return notifTitle
             }
 
             if (notifText.isNotBlank() && !isSystemText(notifText)) {
-                Log.d("SPPMS_TITLE", "From Notification Text: $notifText")
+                Log.d("PARENTRAL_TITLE", "From Notification Text: $notifText")
                 return notifText
             }
         }
@@ -174,7 +241,7 @@ class ChildDashboardActivity : AppCompatActivity() {
 
             ""
         } catch (e: Exception) {
-            Log.e("SPPMS_MEDIA", "Media session error: ${e.message}")
+            Log.e("PARENTRAL_MEDIA", "Media session error: ${e.message}")
             ""
         }
     }
@@ -264,6 +331,89 @@ class ChildDashboardActivity : AppCompatActivity() {
             pkg.contains("primevideo") -> "Prime Video"
             pkg == "unknown" -> "Unknown"
             else -> "Other App"
+        }
+    }
+
+    private fun checkLocationPermissionAndFetch() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            fetchAndSaveLocation()
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
+                locationPermissionCode
+            )
+        }
+    }
+
+    private fun fetchAndSaveLocation() {
+        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location ->
+                if (location != null) {
+                    currentLatitude = location.latitude
+                    currentLongitude = location.longitude
+                    saveLocationToFirestore(location.latitude, location.longitude)
+                }
+            }
+            .addOnFailureListener {
+                Log.e("PARENTRAL_LOCATION", "Failed to fetch location")
+            }
+    }
+
+    private fun saveLocationToFirestore(latitude: Double, longitude: Double) {
+        val user = auth.currentUser ?: return
+
+        val locationData = hashMapOf<String, Any>(
+            "latitude" to latitude,
+            "longitude" to longitude,
+            "locationUpdatedAt" to System.currentTimeMillis()
+        )
+
+        db.collection("users")
+            .document(user.uid)
+            .update(locationData)
+            .addOnSuccessListener {
+                Log.d("PARENTRAL_LOCATION", "Location saved successfully")
+            }
+            .addOnFailureListener {
+                Log.e("PARENTRAL_LOCATION", "Failed to save location")
+            }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == locationPermissionCode) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                fetchAndSaveLocation()
+            } else {
+                Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

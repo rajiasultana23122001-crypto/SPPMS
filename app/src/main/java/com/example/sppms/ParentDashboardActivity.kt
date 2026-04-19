@@ -17,27 +17,20 @@ class ParentDashboardActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        val tvLogout = findViewById<TextView>(R.id.tvLogout)
-
         val cardScreenTime = findViewById<LinearLayout>(R.id.cardScreenTime)
         val cardLocation = findViewById<LinearLayout>(R.id.cardLocation)
         val cardAppUsage = findViewById<LinearLayout>(R.id.cardAppUsage)
         val cardAlerts = findViewById<LinearLayout>(R.id.cardAlerts)
         val cardChildren = findViewById<LinearLayout>(R.id.cardChildren)
-        val cardSettings = findViewById<LinearLayout>(R.id.cardSettings)
-
-        tvLogout.setOnClickListener {
-            auth.signOut()
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }
+        val cardLast24History = findViewById<LinearLayout>(R.id.cardLast24History)
+        val tvLogout = findViewById<TextView>(R.id.tvLogout)
 
         cardScreenTime.setOnClickListener {
             startActivity(Intent(this, ScreenTimeActivity::class.java))
         }
 
         cardLocation.setOnClickListener {
-            // later
+            startActivity(Intent(this, LocationActivity::class.java))
         }
 
         cardAppUsage.setOnClickListener {
@@ -45,15 +38,21 @@ class ParentDashboardActivity : AppCompatActivity() {
         }
 
         cardAlerts.setOnClickListener {
-            // later
-        }
-
-        cardChildren.setOnClickListener {
-            // later
+            startActivity(Intent(this, AlertsActivity::class.java))
         }
 
         cardChildren.setOnClickListener {
             startActivity(Intent(this, ChildrenActivity::class.java))
+        }
+
+        cardLast24History.setOnClickListener {
+            startActivity(Intent(this, Last24HourHistoryActivity::class.java))
+        }
+
+        tvLogout.setOnClickListener {
+            auth.signOut()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 }

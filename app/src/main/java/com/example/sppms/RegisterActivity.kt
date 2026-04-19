@@ -1,5 +1,6 @@
 package com.example.sppms
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -34,7 +35,6 @@ class RegisterActivity : AppCompatActivity() {
         val etParentEmail = findViewById<EditText>(R.id.etParentEmail)
         val btnRegister = findViewById<Button>(R.id.btnRegisterNow)
 
-        // Role switch UI
         radioGroupRole.setOnCheckedChangeListener { _, checkedId ->
             if (checkedId == rbParent.id) {
                 parentLayout.visibility = View.VISIBLE
@@ -61,7 +61,6 @@ class RegisterActivity : AppCompatActivity() {
                 else -> ""
             }
 
-            // Validation
             if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, "Fill all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -97,7 +96,6 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Firebase Auth
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -112,17 +110,19 @@ class RegisterActivity : AppCompatActivity() {
                             "childAge" to childAge
                         )
 
-                        // Only child will have parentEmail
                         if (role == "child") {
                             userMap["parentEmail"] = parentEmail
                         }
 
-                        // Save to Firestore
                         db.collection("users")
                             .document(userId)
                             .set(userMap)
                             .addOnSuccessListener {
-                                Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "Register successful", Toast.LENGTH_SHORT).show()
+
+                                val intent = Intent(this, LoginActivity::class.java)
+                                intent.putExtra("fromRegister", true)
+                                startActivity(intent)
                                 finish()
                             }
                             .addOnFailureListener {

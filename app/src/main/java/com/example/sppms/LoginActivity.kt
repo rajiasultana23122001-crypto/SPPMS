@@ -2,8 +2,10 @@ package com.example.sppms
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -23,61 +25,50 @@ class LoginActivity : AppCompatActivity() {
 
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
-        val btnLogin = findViewById<Button>(R.id.btnLoginSubmit)
+        val btnLogin = findViewById<Button>(R.id.btnLogin)
+        val tvGoRegister = findViewById<TextView>(R.id.tvGoRegister)
+        val tvLoginMessage = findViewById<TextView>(R.id.tvLoginMessage)
+
+        val fromRegister = intent.getBooleanExtra("fromRegister", false)
+        if (fromRegister) {
+            tvLoginMessage.visibility = View.VISIBLE
+        }
+
+        tvGoRegister.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
 
         btnLogin.setOnClickListener {
-
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Fill all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
+                .addOnSuccessListener { result ->
+                    val uid = result.user?.uid ?: return@addOnSuccessListener
 
-                        val userId = auth.currentUser?.uid
+                    db.collection("users").document(uid).get()
+                        .addOnSuccessListener { document ->
+                            val role = document.getString("role")
 
-                        if (userId == null) {
-                            Toast.makeText(this, "User ID not found", Toast.LENGTH_SHORT).show()
-                            return@addOnCompleteListener
+                            if (role == "parent") {
+                                startActivity(Intent(this, ParentDashboardActivity::class.java))
+                            } else {
+                                startActivity(Intent(this, ChildDashboardActivity::class.java))
+                            }
+
+                            finish()
                         }
-
-                        db.collection("users").document(userId).get()
-                            .addOnSuccessListener { document ->
-
-                                if (document.exists()) {
-                                    val role = document.getString("role")
-
-                                    if (role == "parent") {
-                                        Toast.makeText(this, "Parent Login Successful", Toast.LENGTH_SHORT).show()
-                                        startActivity(Intent(this, ParentDashboardActivity::class.java))
-                                        finish()
-                                    } else if (role == "child") {
-                                        Toast.makeText(this, "Child Login Successful", Toast.LENGTH_SHORT).show()
-                                        startActivity(Intent(this, ChildDashboardActivity::class.java))
-                                        finish()
-                                    } else {
-                                        Toast.makeText(this, "Role not found", Toast.LENGTH_SHORT).show()
-                                    }
-                                } else {
-                                    Toast.makeText(this, "User data not found in Firestore", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                            .addOnFailureListener {
-                                Toast.makeText(this, "Failed to get user data", Toast.LENGTH_SHORT).show()
-                            }
-
-                    } else {
-                        Toast.makeText(
-                            this,
-                            task.exception?.message ?: "Login Failed",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                        .addOnFailureListener {
+                            Toast.makeText(this, "Failed to load user role", Toast.LENGTH_SHORT).show()
+                        }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
                 }
         }
     }

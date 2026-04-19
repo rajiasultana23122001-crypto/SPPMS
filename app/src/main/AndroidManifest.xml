@@ -11,14 +11,15 @@
 
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SPPMS">
+        android:theme="@style/Theme.Parentral">
 
         <activity
             android:name=".MainActivity"
@@ -36,14 +37,16 @@
         <activity android:name=".ChildrenActivity" />
         <activity android:name=".AppUsageActivity" />
         <activity android:name=".ScreenTimeActivity" />
-
+        <activity android:name=".Last24HourHistoryActivity" />
+        <activity android:name=".LocationActivity" />
+        <activity android:name=".AlertsActivity" />
         <service android:name=".YouTubeMonitorService" />
 
         <service
             android:name=".MyNotificationListener"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
             android:exported="true"
-            android:label="SPPMS Notification Access">
+            android:label="Parentral Notification Access">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>

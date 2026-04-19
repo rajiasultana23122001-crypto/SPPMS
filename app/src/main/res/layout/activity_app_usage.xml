@@ -11,27 +11,15 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Title -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Parent Monitoring Dashboard"
+            android:text="Child Activity &amp; Location"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="#000000"
             android:gravity="center"
             android:paddingBottom="16dp" />
-
-        <TextView
-            android:id="@+id/tvUsageDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="#333333"
-            android:padding="12dp"
-            android:background="@android:color/white"
-            android:elevation="2dp"
-            android:lineSpacingExtra="4dp" />
 
     </LinearLayout>
 
