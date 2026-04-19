@@ -1,5 +1,6 @@
 package com.example.sppms
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -20,70 +21,45 @@ class AppUsageActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
 
         val container = findViewById<LinearLayout>(R.id.containerLayout)
-        val currentUserEmail = auth.currentUser?.email
+        val parentEmail = auth.currentUser?.email
 
         db.collection("users")
-            .whereEqualTo("parentEmail", currentUserEmail)
+            .whereEqualTo("parentEmail", parentEmail)
             .get()
-            .addOnSuccessListener { documents ->
+            .addOnSuccessListener { docs ->
 
                 container.removeAllViews()
 
-                // title
-                val titleText = TextView(this)
-                titleText.layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                )
-                titleText.text = "App Usage"
-                titleText.textSize = 24f
-                titleText.setPadding(12, 12, 12, 24)
-                titleText.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
-                container.addView(titleText)
+                if (docs.isEmpty) {
+                    val tv = TextView(this)
+                    tv.text = "No child found"
+                    tv.textSize = 18f
+                    container.addView(tv)
+                    return@addOnSuccessListener
+                }
 
-                for (doc in documents) {
+                for (doc in docs) {
 
                     val name = doc.getString("name") ?: "Unknown"
-                    val email = doc.getString("email") ?: "No email"
-                    val appName = doc.getString("appUsage") ?: "No app data"
-                    val youtubeTitle = doc.getString("youtubeTitle") ?: "No video data yet"
-                    val watchTime = doc.getString("watchTime") ?: "No watch time yet"
-
-                    val category = if (
-                        youtubeTitle.lowercase().contains("math") ||
-                        youtubeTitle.lowercase().contains("class") ||
-                        youtubeTitle.lowercase().contains("science")
-                    ) {
-                        "Academic 📚"
-                    } else {
-                        "Entertainment 🎮"
-                    }
-
-                    val watchSeconds = watchTime
-                        .replace("sec", "")
-                        .replace("minutes", "")
-                        .trim()
-                        .toIntOrNull() ?: 0
-
-                    val alertMessage = when {
-                        category.contains("Entertainment") -> "Alert: Entertainment content"
-                        watchSeconds >= 120 -> "Alert: Long screen time"
-                        else -> "Alert: Safe usage"
-                    }
+                    val email = doc.getString("email") ?: ""
+                    val app = doc.getString("appUsage") ?: "Unknown"
+                    val video = doc.getString("videoTitle") ?: "Unknown title"
+                    val category = doc.getString("category") ?: "Unknown"
+                    val time = doc.getString("watchTime") ?: "0 sec"
 
                     val tv = TextView(this)
-                    tv.text =
-                        "Name: $name\n" +
-                                "Email: $email\n" +
-                                "App: $appName\n" +
-                                "Video: $youtubeTitle\n" +
-                                "Category: $category\n" +
-                                "Time: $watchTime\n" +
-                                "$alertMessage"
 
-                    tv.textSize = 16f
-                    tv.setPadding(16, 16, 16, 16)
-                    tv.setBackgroundColor(android.graphics.Color.WHITE)
+                    tv.text = """
+                        Name: $name
+                        Email: $email
+                        App: $app
+                        Video Title: $video
+                        Category: $category
+                        Time: $time
+                    """.trimIndent()
+
+                    tv.setPadding(16,16,16,16)
+                    tv.setBackgroundColor(Color.WHITE)
 
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
