@@ -41,7 +41,11 @@
         <activity android:name=".LocationActivity" />
         <activity android:name=".AlertsActivity" />
         <service android:name=".YouTubeMonitorService" />
-
+        <activity android:name=".LocationActivity" />
+        <activity android:name=".ChildLocationMapActivity" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_GOOGLE_MAPS_API_KEY" />
         <service
             android:name=".MyNotificationListener"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
