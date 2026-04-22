@@ -13,7 +13,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +22,9 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class ChildDashboardActivity : AppCompatActivity() {
 
@@ -37,6 +39,10 @@ class ChildDashboardActivity : AppCompatActivity() {
 
     private var currentLatitude: Double? = null
     private var currentLongitude: Double? = null
+
+    private var reelsStartedAt: Long = 0L
+    private var lastReelsDateKey: String = ""
+    private var todayReelsSeconds: Long = 0L
 
     private lateinit var tvCurrentStatus: TextView
     private lateinit var btnPermission: Button
@@ -102,9 +108,35 @@ class ChildDashboardActivity : AppCompatActivity() {
             .addOnSuccessListener { document ->
                 val childName = document.getString("name") ?: "Unknown Child"
                 val childEmail = document.getString("email") ?: user.email.orEmpty()
+                val savedLimit = document.getLong("reelsDailyLimitMin") ?: 30L
 
                 val videoTitle = detectCurrentVideoTitle(currentPackage)
                 val category = classifyVideo(videoTitle)
+
+                val reelsNow = isReelsContent(currentPackage, videoTitle)
+                val todayKey = getTodayDateKey()
+
+                if (lastReelsDateKey != todayKey) {
+                    lastReelsDateKey = todayKey
+                    todayReelsSeconds = 0L
+                    reelsStartedAt = 0L
+                }
+
+                var reelsStatus = "Stopped"
+                var reelsApp = "Not detected"
+
+                if (reelsNow) {
+                    reelsStatus = "Watching Reels"
+                    reelsApp = currentApp
+
+                    if (reelsStartedAt == 0L) {
+                        reelsStartedAt = System.currentTimeMillis()
+                    }
+
+                    todayReelsSeconds += 5
+                } else {
+                    reelsStartedAt = 0L
+                }
 
                 val data = hashMapOf<String, Any>(
                     "appUsage" to currentApp,
@@ -114,7 +146,12 @@ class ChildDashboardActivity : AppCompatActivity() {
                     "category" to category,
                     "childName" to childName,
                     "childEmail" to childEmail,
-                    "lastUpdated" to System.currentTimeMillis()
+                    "lastUpdated" to System.currentTimeMillis(),
+                    "reelsStatus" to reelsStatus,
+                    "reelsApp" to reelsApp,
+                    "reelsStartedAt" to reelsStartedAt,
+                    "todayReelsSeconds" to todayReelsSeconds,
+                    "reelsDailyLimitMin" to savedLimit
                 )
 
                 currentLatitude?.let { data["latitude"] = it }
@@ -124,16 +161,6 @@ class ChildDashboardActivity : AppCompatActivity() {
                 db.collection("users").document(user.uid)
                     .update(data as Map<String, Any>)
                     .addOnSuccessListener {
-                        saveUsageLog(
-                            childUid = user.uid,
-                            childName = childName,
-                            childEmail = childEmail,
-                            currentApp = currentApp,
-                            videoTitle = videoTitle,
-                            category = category,
-                            durationSec = durationSec
-                        )
-
                         val locationText =
                             if (currentLatitude != null && currentLongitude != null) {
                                 "${currentLatitude}, ${currentLongitude}"
@@ -141,12 +168,29 @@ class ChildDashboardActivity : AppCompatActivity() {
                                 "Location not available"
                             }
 
+                        val reelsStartText = if (reelsStartedAt > 0) {
+                            SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date(reelsStartedAt))
+                        } else {
+                            "Not started"
+                        }
+
+                        val todayReelsMin = todayReelsSeconds / 60
+                        val limitWarning =
+                            if (todayReelsMin >= savedLimit) "Limit exceeded" else "Within limit"
+
                         tvCurrentStatus.text = """
                             Current App: $currentApp
                             Video Title: $videoTitle
                             Category: $category
                             Time: ${durationSec} sec
                             Location: $locationText
+
+                            Reels: $reelsStatus
+                            Reels App: $reelsApp
+                            Reels started at: $reelsStartText
+                            Today's reels: $todayReelsMin min
+                            Reels limit: $savedLimit min
+                            Reels warning: $limitWarning
                         """.trimIndent()
                     }
                     .addOnFailureListener {
@@ -155,59 +199,91 @@ class ChildDashboardActivity : AppCompatActivity() {
             }
     }
 
-    private fun saveUsageLog(
-        childUid: String,
-        childName: String,
-        childEmail: String,
-        currentApp: String,
-        videoTitle: String,
-        category: String,
-        durationSec: Long
-    ) {
-        val logData = hashMapOf<String, Any>(
-            "childUid" to childUid,
-            "childName" to childName,
-            "childEmail" to childEmail,
-            "appUsage" to currentApp,
-            "videoTitle" to videoTitle,
-            "category" to category,
-            "durationSec" to durationSec,
-            "timestamp" to System.currentTimeMillis()
-        )
+    private fun isReelsContent(currentPackage: String, videoTitle: String): Boolean {
 
-        currentLatitude?.let { logData["latitude"] = it }
-        currentLongitude?.let { logData["longitude"] = it }
+        val pkg = currentPackage.lowercase()
+        val title = videoTitle.lowercase()
 
-        db.collection("usage_logs")
-            .add(logData)
-            .addOnSuccessListener {
-                Log.d("PARENTRAL_LOG", "Usage log saved")
+        val notifTitle = (MyNotificationListener.latestTitle ?: "").lowercase()
+        val notifText = (MyNotificationListener.latestText ?: "").lowercase()
+        val notifBigText = (MyNotificationListener.latestBigText ?: "").lowercase()
+        val notifSubText = (MyNotificationListener.latestSubText ?: "").lowercase()
+
+        val combined = "$title $notifTitle $notifText $notifBigText $notifSubText"
+
+        // YouTube Shorts detect
+        if (pkg.contains("youtube")) {
+
+            // keyword detect
+            if (
+                combined.contains("shorts") ||
+                combined.contains("#shorts") ||
+                combined.contains("youtube shorts") ||
+                combined.contains("short")
+            ) {
+                return true
             }
-            .addOnFailureListener {
-                Log.e("PARENTRAL_LOG", "Failed to save usage log")
+
+            // fallback: title unknown hole shorts dhorbo
+            if (videoTitle == "Unknown title") {
+                return true
             }
+        }
+
+        // Instagram Reels detect
+        if (pkg.contains("instagram")) {
+            if (
+                combined.contains("reel") ||
+                combined.contains("reels")
+            ) {
+                return true
+            }
+        }
+
+        // Facebook Reels detect
+        if (pkg.contains("facebook")) {
+            if (
+                combined.contains("reel") ||
+                combined.contains("reels")
+            ) {
+                return true
+            }
+        }
+
+        return false
+    }
+
+    private fun getTodayDateKey(): String {
+        return SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
     }
 
     private fun detectCurrentVideoTitle(currentPackage: String): String {
         val mediaTitle = getMediaSessionTitle(currentPackage)
         if (mediaTitle.isNotBlank() && !isSystemText(mediaTitle)) {
-            Log.d("PARENTRAL_TITLE", "From MediaSession: $mediaTitle")
             return mediaTitle
         }
 
         val notifPackage = MyNotificationListener.latestPackage ?: ""
         val notifTitle = MyNotificationListener.latestTitle ?: ""
         val notifText = MyNotificationListener.latestText ?: ""
+        val notifBigText = MyNotificationListener.latestBigText ?: ""
+        val notifSubText = MyNotificationListener.latestSubText ?: ""
 
         if (notifPackage == currentPackage) {
             if (notifTitle.isNotBlank() && !isSystemText(notifTitle)) {
-                Log.d("PARENTRAL_TITLE", "From Notification Title: $notifTitle")
                 return notifTitle
             }
 
             if (notifText.isNotBlank() && !isSystemText(notifText)) {
-                Log.d("PARENTRAL_TITLE", "From Notification Text: $notifText")
                 return notifText
+            }
+
+            if (notifBigText.isNotBlank() && !isSystemText(notifBigText)) {
+                return notifBigText
+            }
+
+            if (notifSubText.isNotBlank() && !isSystemText(notifSubText)) {
+                return notifSubText
             }
         }
 
@@ -238,10 +314,8 @@ class ChildDashboardActivity : AppCompatActivity() {
                     }
                 }
             }
-
             ""
         } catch (e: Exception) {
-            Log.e("PARENTRAL_MEDIA", "Media session error: ${e.message}")
             ""
         }
     }
@@ -376,9 +450,6 @@ class ChildDashboardActivity : AppCompatActivity() {
                     saveLocationToFirestore(location.latitude, location.longitude)
                 }
             }
-            .addOnFailureListener {
-                Log.e("PARENTRAL_LOCATION", "Failed to fetch location")
-            }
     }
 
     private fun saveLocationToFirestore(latitude: Double, longitude: Double) {
@@ -393,12 +464,6 @@ class ChildDashboardActivity : AppCompatActivity() {
         db.collection("users")
             .document(user.uid)
             .update(locationData)
-            .addOnSuccessListener {
-                Log.d("PARENTRAL_LOCATION", "Location saved successfully")
-            }
-            .addOnFailureListener {
-                Log.e("PARENTRAL_LOCATION", "Failed to save location")
-            }
     }
 
     override fun onRequestPermissionsResult(

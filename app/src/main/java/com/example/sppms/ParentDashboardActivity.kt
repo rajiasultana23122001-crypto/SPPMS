@@ -20,7 +20,7 @@ class ParentDashboardActivity : AppCompatActivity() {
         val cardScreenTime = findViewById<LinearLayout>(R.id.cardScreenTime)
         val cardLocation = findViewById<LinearLayout>(R.id.cardLocation)
         val cardAppUsage = findViewById<LinearLayout>(R.id.cardAppUsage)
-        val cardAlerts = findViewById<LinearLayout>(R.id.cardAlerts)
+        val cardReels = findViewById<LinearLayout>(R.id.cardReels)
         val cardChildren = findViewById<LinearLayout>(R.id.cardChildren)
         val cardLast24History = findViewById<LinearLayout>(R.id.cardLast24History)
         val tvLogout = findViewById<TextView>(R.id.tvLogout)
@@ -37,8 +37,8 @@ class ParentDashboardActivity : AppCompatActivity() {
             startActivity(Intent(this, AppUsageActivity::class.java))
         }
 
-        cardAlerts.setOnClickListener {
-            startActivity(Intent(this, AlertsActivity::class.java))
+        cardReels.setOnClickListener {
+            startActivity(Intent(this, ReelsActivity::class.java))
         }
 
         cardChildren.setOnClickListener {
