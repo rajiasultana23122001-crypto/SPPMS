@@ -1,6 +1,12 @@
 package com.example.sppms
 
+import android.Manifest
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.text.InputType
 import android.widget.Button
@@ -9,6 +15,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
@@ -21,6 +30,9 @@ class ReelsActivity : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private lateinit var containerLayout: LinearLayout
 
+    private val notificationPermissionCode = 2001
+    private val alertedChildren = mutableSetOf<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reels)
@@ -29,6 +41,8 @@ class ReelsActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         containerLayout = findViewById(R.id.containerLayout)
 
+        createNotificationChannel()
+        requestNotificationPermissionIfNeeded()
         loadReelsData()
     }
 
@@ -77,6 +91,15 @@ class ReelsActivity : AppCompatActivity() {
 
                     val todayMinutes = todayReelsSeconds / 60
                     val limitExceeded = todayMinutes >= reelsDailyLimitMin
+
+                    if (limitExceeded && !alertedChildren.contains(childUid)) {
+                        showLimitNotification(name, todayMinutes, reelsDailyLimitMin)
+                        alertedChildren.add(childUid)
+                    }
+
+                    if (!limitExceeded && alertedChildren.contains(childUid)) {
+                        alertedChildren.remove(childUid)
+                    }
 
                     val cardLayout = LinearLayout(this)
                     cardLayout.orientation = LinearLayout.VERTICAL
@@ -132,6 +155,7 @@ class ReelsActivity : AppCompatActivity() {
                             .update("reelsDailyLimitMin", newLimit)
                             .addOnSuccessListener {
                                 Toast.makeText(this, "Limit saved", Toast.LENGTH_SHORT).show()
+                                alertedChildren.remove(childUid)
                                 loadReelsData()
                             }
                             .addOnFailureListener {
@@ -155,5 +179,50 @@ class ReelsActivity : AppCompatActivity() {
                 errorText.setPadding(16, 16, 16, 16)
                 containerLayout.addView(errorText)
             }
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                "reels_alert_channel",
+                "Reels Limit Alerts",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "Alerts when child exceeds reels limit"
+                enableVibration(true)
+            }
+
+            val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(channel)
+        }
+    }
+
+    private fun showLimitNotification(childName: String, usedMinutes: Long, limitMinutes: Long) {
+        val builder = NotificationCompat.Builder(this, "reels_alert_channel")
+            .setSmallIcon(android.R.drawable.ic_dialog_alert)
+            .setContentTitle("Reels Limit Exceeded")
+            .setContentText("$childName used $usedMinutes min. Limit: $limitMinutes min.")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true)
+            .setDefaults(NotificationCompat.DEFAULT_ALL)
+
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        manager.notify(childName.hashCode(), builder.build())
+    }
+
+    private fun requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                    notificationPermissionCode
+                )
+            }
+        }
     }
 }
