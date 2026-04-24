@@ -1,53 +1,87 @@
 package com.example.sppms
 
+import android.app.AppOpsManager
+import android.app.usage.UsageStatsManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.widget.LinearLayout
+import android.provider.Settings
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import java.util.Calendar
 
 class ScreenTimeActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    private lateinit var tvScreenTime: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_screen_time)
 
-        auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+        tvScreenTime = findViewById(R.id.tvScreenTime)
 
-        val container = findViewById<LinearLayout>(R.id.containerLayout)
-        val currentUserEmail = auth.currentUser?.email
+        if (!hasUsageAccessPermission()) {
+            Toast.makeText(this, "Please allow Usage Access permission", Toast.LENGTH_LONG).show()
+            startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
+        } else {
+            showTodayScreenTime()
+        }
+    }
 
-        db.collection("users")
-            .whereEqualTo("parentEmail", currentUserEmail)
-            .get()
-            .addOnSuccessListener { documents ->
+    override fun onResume() {
+        super.onResume()
+        if (::tvScreenTime.isInitialized && hasUsageAccessPermission()) {
+            showTodayScreenTime()
+        }
+    }
 
-                for (doc in documents) {
+    private fun showTodayScreenTime() {
+        val totalMinutes = getTodayTotalScreenTimeMinutes()
+        tvScreenTime.text = formatScreenTime(totalMinutes)
+    }
 
-                    val name = doc.getString("name") ?: "Unknown"
-                    val appName = doc.getString("appUsage") ?: "No app data"
-                    val watchTime = doc.getString("watchTime") ?: "0 sec"
+    private fun getTodayTotalScreenTimeMinutes(): Int {
+        val usageStatsManager = getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
 
-                    val tv = TextView(this)
-                    tv.text = "Name: $name\nApp: $appName\nScreen Time: $watchTime"
-                    tv.textSize = 16f
-                    tv.setPadding(16, 16, 16, 16)
-                    tv.setBackgroundColor(android.graphics.Color.WHITE)
+        val calendar = Calendar.getInstance()
+        val endTime = calendar.timeInMillis
 
-                    val params = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                    )
-                    params.bottomMargin = 20
-                    tv.layoutParams = params
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        val startTime = calendar.timeInMillis
 
-                    container.addView(tv)
-                }
-            }
+        val stats = usageStatsManager.queryUsageStats(
+            UsageStatsManager.INTERVAL_DAILY,
+            startTime,
+            endTime
+        )
+
+        val totalMillis = stats.sumOf { it.totalTimeInForeground }
+
+        return (totalMillis / 1000 / 60).toInt()
+    }
+
+    private fun formatScreenTime(totalMinutes: Int): String {
+        val hours = totalMinutes / 60
+        val minutes = totalMinutes % 60
+
+        return when {
+            hours > 0 && minutes > 0 -> "$hours hr $minutes min"
+            hours > 0 -> "$hours hr"
+            else -> "$minutes min"
+        }
+    }
+
+    private fun hasUsageAccessPermission(): Boolean {
+        val appOps = getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+        val mode = appOps.checkOpNoThrow(
+            AppOpsManager.OPSTR_GET_USAGE_STATS,
+            android.os.Process.myUid(),
+            packageName
+        )
+        return mode == AppOpsManager.MODE_ALLOWED
     }
 }
