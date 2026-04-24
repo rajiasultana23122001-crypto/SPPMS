@@ -48,6 +48,7 @@ class AppUsageActivity : AppCompatActivity() {
                     val empty = TextView(this)
                     empty.text = "No child data found"
                     empty.textSize = 18f
+                    empty.setTextColor(Color.BLACK)
                     containerLayout.addView(empty)
                     return@addOnSuccessListener
                 }
@@ -67,7 +68,6 @@ class AppUsageActivity : AppCompatActivity() {
                         "Unknown time"
                     }
 
-                    // 🎴 Card Layout
                     val card = LinearLayout(this)
                     card.orientation = LinearLayout.VERTICAL
                     card.setBackgroundColor(Color.WHITE)
@@ -103,6 +103,7 @@ class AppUsageActivity : AppCompatActivity() {
                 val error = TextView(this)
                 error.text = "Failed to load data"
                 error.textSize = 18f
+                error.setTextColor(Color.BLACK)
                 containerLayout.addView(error)
             }
     }
