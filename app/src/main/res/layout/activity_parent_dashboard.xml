@@ -197,7 +197,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="20dp"
             android:background="#FFFFFF"
             android:elevation="3dp"
             android:gravity="center_vertical"
@@ -215,6 +214,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="24 Hour History"
+                android:textColor="#C8C1D1"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Others App -->
+        <LinearLayout
+            android:id="@+id/cardOthersApp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:background="#FFFFFF"
+            android:elevation="3dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="📊"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Others App"
                 android:textColor="#C8C1D1"
                 android:textSize="22sp"
                 android:textStyle="bold" />

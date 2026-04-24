@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECECEC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Others App Usage"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:id="@+id/tvFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Facebook: 45 minutes"
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
+        <ProgressBar
+            android:id="@+id/barFacebook"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:max="120"
+            android:progress="45"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvInstagram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Instagram: 60 minutes"
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
+        <ProgressBar
+            android:id="@+id/barInstagram"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:max="120"
+            android:progress="60"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvTwitter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Twitter: 20 minutes"
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
+        <ProgressBar
+            android:id="@+id/barTwitter"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:max="120"
+            android:progress="20"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvSnapchat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Snapchat: 35 minutes"
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
+        <ProgressBar
+            android:id="@+id/barSnapchat"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:max="120"
+            android:progress="35"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvMessenger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Messenger: 50 minutes"
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
+        <ProgressBar
+            android:id="@+id/barMessenger"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:max="120"
+            android:progress="50"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvTelegram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Telegram: 25 minutes"
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
+        <ProgressBar
+            android:id="@+id/barTelegram"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:max="120"
+            android:progress="25"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvWhatsapp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="WhatsApp: 70 minutes"
+            android:textSize="20sp"
+            android:textColor="#000000" />
+
+        <ProgressBar
+            android:id="@+id/barWhatsapp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:max="120"
+            android:progress="70"
+            android:layout_marginBottom="12dp" />
+
+    </LinearLayout>
+</ScrollView>
