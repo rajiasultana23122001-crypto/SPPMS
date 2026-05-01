@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="accessibility_service_description">Parentral monitors YouTube activity to help parents track their child\'s video viewing habits.</string>
+    <string name="app_name">Parentral</string>
+    <string name="default_web_client_id">YOUR_CLIENT_ID_HERE</string>
+    <string name="gcm_defaultSenderId" translatable="false">414023421593</string>
+    <string name="google_api_key" translatable="false">AIzaSyAg2vSgrtrwyLEU9yWubU90i3xFaNbRLXs</string>
+    <string name="google_app_id" translatable="false">1:414023421593:android:16d571fee356eebd0eb208</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAg2vSgrtrwyLEU9yWubU90i3xFaNbRLXs</string>
+    <string name="google_storage_bucket" translatable="false">sppms2-9e2fb.firebasestorage.app</string>
+    <string name="project_id" translatable="false">sppms2-9e2fb</string>
+    <style name="Base.Theme.Parentral" parent="Theme.Material3.DayNight.NoActionBar">
+    </style>
+    <style name="Theme.Parentral" parent="Base.Theme.Parentral"/>
+</resources>

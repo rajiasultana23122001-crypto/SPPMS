@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.Parentral" parent="Theme.Material3.DayNight.NoActionBar">
+    </style>
+    <style name="Theme.Parentral" parent="Base.Theme.Parentral"/>
+</resources>

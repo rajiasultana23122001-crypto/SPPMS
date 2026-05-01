@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Parentral</string>
+    <string name="accessibility_service_description">Parentral monitors YouTube activity to help parents track their child\'s video viewing habits.</string>
+
+    <!-- This is a placeholder. The real value is generated from your google-services.json -->
+    <string name="default_web_client_id">YOUR_CLIENT_ID_HERE</string>
+</resources>

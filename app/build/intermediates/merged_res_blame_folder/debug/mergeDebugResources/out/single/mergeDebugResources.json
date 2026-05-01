@@ -1,0 +1,158 @@
+[
+    {
+        "merged": "com.example.sppms.app-debug-38:/drawable_family_banner.png.flat",
+        "source": "com.example.sppms.app-main-40:/drawable/family_banner.png"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/drawable_card_background.xml.flat",
+        "source": "com.example.sppms.app-main-40:/drawable/card_background.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_login.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.sppms.app-main-40:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_location.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_location.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/drawable_bg_circle_purple_light.xml.flat",
+        "source": "com.example.sppms.app-main-40:/drawable/bg_circle_purple_light.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_children.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_children.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/drawable_bg_circle_white_shadow.xml.flat",
+        "source": "com.example.sppms.app-main-40:/drawable/bg_circle_white_shadow.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_child_dashboard.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_child_dashboard.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_child_location_map.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_child_location_map.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_alerts.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_alerts.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/xml_youtube_accessibility_service.xml.flat",
+        "source": "com.example.sppms.app-main-40:/xml/youtube_accessibility_service.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_register.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_screen_time.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_screen_time.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.sppms.app-main-40:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_main.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_parent_dashboard.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_parent_dashboard.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-anydpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.sppms.app-main-40:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_others_app.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_others_app.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_last24_hour_history.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_last24_hour_history.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_reels.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_reels.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/drawable_bg_chip_purple.xml.flat",
+        "source": "com.example.sppms.app-main-40:/drawable/bg_chip_purple.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "com.example.sppms.app-main-40:/mipmap-anydpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/drawable_bg_circle_purple.xml.flat",
+        "source": "com.example.sppms.app-main-40:/drawable/bg_circle_purple.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/drawable_bg_screen_time_main.xml.flat",
+        "source": "com.example.sppms.app-main-40:/drawable/bg_screen_time_main.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/layout_activity_app_usage.xml.flat",
+        "source": "com.example.sppms.app-main-40:/layout/activity_app_usage.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/xml_backup_rules.xml.flat",
+        "source": "com.example.sppms.app-main-40:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.sppms.app-debug-38:/xml_accessibility_service_config.xml.flat",
+        "source": "com.example.sppms.app-main-40:/xml/accessibility_service_config.xml"
+    }
+]
