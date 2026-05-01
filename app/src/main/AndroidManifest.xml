@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
+        android:name=".SppmsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -61,7 +62,7 @@
 
         <service
             android:name=".MyNotificationListener"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+            android:permission="android.service.notification.NotificationListenerService"
             android:exported="true"
             android:label="Parentral Notification Access">
             <intent-filter>

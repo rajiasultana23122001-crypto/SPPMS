@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F7FF"
+    android:background="@color/bg_purple_light"
     android:fillViewport="true">
 
     <LinearLayout
@@ -24,7 +26,8 @@
                 android:background="@drawable/card_background"
                 android:padding="8dp"
                 android:src="@android:drawable/ic_media_previous"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:contentDescription="Back" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -32,7 +35,7 @@
                 android:layout_toEndOf="@id/btnBack"
                 android:layout_marginStart="16dp"
                 android:text="Others App Usage"
-                android:textColor="#1A1A2E"
+                android:textColor="@color/text_dark"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layout_centerVertical="true" />
@@ -49,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:text="Logout\nStay in control"
                     android:textSize="12sp"
-                    android:textColor="#666666"
+                    android:textColor="@color/text_gray_medium"
                     android:layout_marginEnd="8dp"
                     android:gravity="end" />
 
@@ -57,7 +60,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/card_background"
-                    android:backgroundTint="#7E57C2"
+                    android:backgroundTint="@color/primary_purple"
                     android:text="P"
                     android:textColor="#FFFFFF"
                     android:gravity="center"
@@ -80,8 +83,7 @@
             <TextView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@drawable/card_background"
-                android:backgroundTint="#7E57C2"
+                android:background="@drawable/bg_circle_purple_light"
                 android:text="📊"
                 android:gravity="center"
                 android:textSize="20sp" />
@@ -91,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="Track how much time your child spends\non other apps."
-                android:textColor="#666666"
+                android:textColor="@color/text_gray_medium"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -114,14 +116,14 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@android:drawable/ic_lock_idle_lock"
-                android:tint="#7E57C2" />
+                app:tint="@color/primary_purple" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Keeping your child safe in the digital world\nStay informed. Stay in control."
-                android:textColor="#7E57C2"
+                android:textColor="@color/primary_purple"
                 android:textSize="12sp" />
         </LinearLayout>
 

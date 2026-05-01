@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -56,7 +57,7 @@ class LocationActivity : AppCompatActivity() {
                 val title = TextView(this).apply {
                     text = "Select a child to track"
                     textSize = 18f
-                    setTextColor(Color.parseColor("#3E1F92"))
+                    setTextColor(ContextCompat.getColor(this@LocationActivity, R.color.primary_dark_purple))
                     setTypeface(null, android.graphics.Typeface.BOLD)
                     setPadding(0, 0, 0, 24.toPx())
                 }
@@ -95,7 +96,7 @@ class LocationActivity : AppCompatActivity() {
             setTypeface(null, android.graphics.Typeface.BOLD)
             gravity = Gravity.CENTER
             setBackgroundResource(R.drawable.bg_circle_purple_light)
-            backgroundTintList = android.content.res.ColorStateList.valueOf(Color.parseColor("#7E57C2"))
+            backgroundTintList = android.content.res.ColorStateList.valueOf(ContextCompat.getColor(this@LocationActivity, R.color.primary_purple))
             layoutParams = LinearLayout.LayoutParams((48 * density).toInt(), (48 * density).toInt())
         }
 
@@ -106,13 +107,13 @@ class LocationActivity : AppCompatActivity() {
             val nameTv = TextView(this@LocationActivity).apply {
                 text = name
                 textSize = 18f
-                setTextColor(Color.parseColor("#1A1A2E"))
+                setTextColor(ContextCompat.getColor(this@LocationActivity, R.color.text_dark))
                 setTypeface(null, android.graphics.Typeface.BOLD)
             }
             val subTv = TextView(this@LocationActivity).apply {
                 text = if (lat != null && lng != null && lat != 0.0) "📍 Location available" else "📍 No location yet"
                 textSize = 13f
-                setTextColor(Color.GRAY)
+                setTextColor(ContextCompat.getColor(this@LocationActivity, R.color.text_gray_light))
             }
             addView(nameTv)
             addView(subTv)
@@ -129,7 +130,7 @@ class LocationActivity : AppCompatActivity() {
         val header = TextView(this).apply {
             text = "Location: $name"
             textSize = 20f
-            setTextColor(Color.parseColor("#3E1F92"))
+            setTextColor(ContextCompat.getColor(this@LocationActivity, R.color.primary_dark_purple))
             setTypeface(null, android.graphics.Typeface.BOLD)
             setPadding(0, 0, 0, 24.toPx())
         }
@@ -146,7 +147,7 @@ class LocationActivity : AppCompatActivity() {
         val tvEmail = TextView(this).apply {
             text = "✉️ $email"
             textSize = 16f
-            setTextColor(Color.BLACK)
+            setTextColor(ContextCompat.getColor(this@LocationActivity, R.color.text_dark))
             setPadding(0, 0, 0, 12.toPx())
         }
         detailCard.addView(tvEmail)
@@ -159,7 +160,7 @@ class LocationActivity : AppCompatActivity() {
         val tvLoc = TextView(this).apply {
             text = locationText
             textSize = 16f
-            setTextColor(Color.BLACK)
+            setTextColor(ContextCompat.getColor(this@LocationActivity, R.color.text_dark))
             setPadding(0, 0, 0, 8.toPx())
         }
         detailCard.addView(tvLoc)
@@ -169,7 +170,7 @@ class LocationActivity : AppCompatActivity() {
             val tvUpdated = TextView(this).apply {
                 text = "🕒 Updated $minutesAgo min ago"
                 textSize = 14f
-                setTextColor(Color.GRAY)
+                setTextColor(ContextCompat.getColor(this@LocationActivity, R.color.text_gray_light))
                 setPadding(0, 0, 0, 16.toPx())
             }
             detailCard.addView(tvUpdated)
@@ -178,7 +179,7 @@ class LocationActivity : AppCompatActivity() {
         if (lat != null && lng != null && lat != 0.0) {
             val btnViewMap = Button(this).apply {
                 text = "View on Map"
-                setBackgroundColor(Color.parseColor("#5C6BC0"))
+                setBackgroundColor(ContextCompat.getColor(this@LocationActivity, R.color.primary_purple))
                 setTextColor(Color.WHITE)
                 setOnClickListener {
                     val intent = Intent(this@LocationActivity, ChildLocationMapActivity::class.java)
@@ -192,7 +193,7 @@ class LocationActivity : AppCompatActivity() {
 
             val btnGoogleMaps = Button(this).apply {
                 text = "Open in Google Maps"
-                setBackgroundColor(Color.parseColor("#43A047"))
+                setBackgroundColor(Color.parseColor("#43A047")) // Keep green for maps if desired, or use a resource
                 setTextColor(Color.WHITE)
                 val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
                 params.setMargins(0, 12.toPx(), 0, 0)
@@ -211,7 +212,7 @@ class LocationActivity : AppCompatActivity() {
 
         val btnBack = TextView(this).apply {
             text = "← Back to Profiles"
-            setTextColor(Color.parseColor("#7E57C2"))
+            setTextColor(ContextCompat.getColor(this@LocationActivity, R.color.primary_purple))
             gravity = Gravity.CENTER
             setPadding(0, 40.toPx(), 0, 40.toPx())
             setOnClickListener { loadChildrenProfiles() }
@@ -224,7 +225,7 @@ class LocationActivity : AppCompatActivity() {
             text = msg
             gravity = Gravity.CENTER
             setPadding(0, 100.toPx(), 0, 0)
-            setTextColor(Color.GRAY)
+            setTextColor(ContextCompat.getColor(this@LocationActivity, R.color.text_gray_light))
         }
         container.addView(tv)
     }

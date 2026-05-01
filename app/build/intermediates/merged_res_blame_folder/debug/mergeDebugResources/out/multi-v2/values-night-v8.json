@@ -4,6 +4,77 @@
             "outputFile": "com.example.sppms.app-mergeDebugResources-36:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\ASUS\\Downloads\\SPPMS_Fixed\\SPPMS_fixed\\app\\src\\main\\res\\values-night\\colors.xml",
+                    "from": {
+                        "startLines": "16,8,9,2,17,6,7,5,11,12,14,13,3",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "615,306,357,57,667,195,250,145,415,460,562,510,100",
+                        "endColumns": "50,49,54,41,47,53,54,48,43,48,49,50,41",
+                        "endOffsets": "661,351,407,94,710,244,300,189,454,504,607,556,137"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "100,151,201,256,298,346,400,455,504,548,597,647,698",
+                        "endColumns": "50,49,54,41,47,53,54,48,43,48,49,50,41",
+                        "endOffsets": "146,196,251,293,341,395,450,499,543,592,642,693,735"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\Downloads\\SPPMS_Fixed\\SPPMS_fixed\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "from": {
+                        "startLines": "1,-1",
+                        "startColumns": "4,-1",
+                        "startOffsets": "63,-1",
+                        "endLines": "6,-1",
+                        "endColumns": "12,-1",
+                        "endOffsets": "455,-1"
+                    },
+                    "to": {
+                        "startLines": "15,53",
+                        "startColumns": "4,4",
+                        "startOffsets": "740,4528",
+                        "endLines": "20,53",
+                        "endColumns": "12,65",
+                        "endOffsets": "1130,4589"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\9.3.1\\transforms\\0908128d5b927c25fdf67698a45c88f8\\workspace\\transformed\\appcompat-1.6.1\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "21,22,23,24,25,26,27,54",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "1135,1205,1289,1373,1469,1571,1673,4594",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "1200,1284,1368,1464,1566,1668,1762,4678"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\9.3.1\\transforms\\1586b1c815edfe7b765971743a32acb3\\workspace\\transformed\\material-1.11.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,55,56,57,58,59,60,61,62",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1767,1842,1953,2042,2143,2250,2357,2456,2563,2666,2754,2878,2980,3082,3198,3300,3414,3542,3658,3780,3916,4036,4170,4290,4402,4683,4800,4924,5054,5176,5314,5448,5564",
+                        "endColumns": "74,110,88,100,106,106,98,106,102,87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,116,123,129,121,137,133,115,119",
+                        "endOffsets": "1837,1948,2037,2138,2245,2352,2451,2558,2661,2749,2873,2975,3077,3193,3295,3409,3537,3653,3775,3911,4031,4165,4285,4397,4523,4795,4919,5049,5171,5309,5443,5559,5679"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\ASUS\\.gradle\\daemon\\9.3.1\\com.example.sppms.app-mergeDebugResources-36:\\values-night-v8\\values-night-v8.xml",
+            "map": [
+                {
                     "source": "C:\\Users\\ASUS\\Downloads\\SPPMS_Fixed\\SPPMS_fixed\\app\\src\\main\\res\\values-night\\themes.xml",
                     "from": {
                         "startLines": "1,4",

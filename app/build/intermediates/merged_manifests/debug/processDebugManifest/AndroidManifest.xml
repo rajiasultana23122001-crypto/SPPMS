@@ -36,6 +36,7 @@
     <uses-permission android:name="com.example.sppms.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
+        android:name="com.example.sppms.SppmsApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
@@ -85,7 +86,7 @@
             android:name="com.example.sppms.MyNotificationListener"
             android:exported="true"
             android:label="Parentral Notification Access"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
+            android:permission="android.service.notification.NotificationListenerService" >
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>

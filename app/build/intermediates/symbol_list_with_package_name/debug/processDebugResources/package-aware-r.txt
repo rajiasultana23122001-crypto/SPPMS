@@ -1385,6 +1385,9 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color background_white
+color bg_purple_light
+color bg_purple_very_light
 color black
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
@@ -1457,6 +1460,7 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color divider_color
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
@@ -2118,8 +2122,11 @@ color notification_action_color_filter
 color notification_icon_bg_color
 color primary_dark_material_dark
 color primary_dark_material_light
+color primary_dark_purple
+color primary_light_purple
 color primary_material_dark
 color primary_material_light
+color primary_purple
 color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
@@ -2136,6 +2143,10 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color text_dark
+color text_gray_dark
+color text_gray_light
+color text_gray_medium
 color tooltip_background_dark
 color tooltip_background_light
 color white
@@ -3252,7 +3263,6 @@ id beginning
 id bestChoice
 id blocking
 id bottom
-id bottomFamily
 id bounce
 id bounceBoth
 id bounceEnd
@@ -3346,8 +3356,6 @@ id disablePostScroll
 id disableScroll
 id disjoint
 id divider
-id dividerLeft
-id dividerRight
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -3365,7 +3373,6 @@ id edge
 id edit_query
 id edit_text_id
 id elastic
-id emailIcon
 id embed
 id end
 id endToStart
@@ -3406,6 +3413,7 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id headerLayout
 id header_title
 id hide_ime_id
 id hideable
@@ -3415,6 +3423,8 @@ id honorRequest
 id horizontal_only
 id hybrid
 id icon
+id iconEmail
+id iconLock
 id icon_group
 id icon_only
 id ifRoom
@@ -3427,7 +3437,6 @@ id immediateStop
 id included
 id indeterminate
 id info
-id inputLayout
 id invisible
 id inward
 id italic
@@ -3442,11 +3451,12 @@ id legacy
 id light
 id line1
 id line3
+id lineLeft
+id lineRight
 id linear
 id listMode
 id list_item
 id locationContainer
-id lockIcon
 id logoLayout
 id m3_side_sheet
 id map
@@ -3544,7 +3554,6 @@ id open_search_view_search_prefix
 id open_search_view_status_bar_spacer
 id open_search_view_toolbar
 id open_search_view_toolbar_container
-id orLayout
 id outline
 id outward
 id overshoot
@@ -3573,7 +3582,6 @@ id rbChild
 id rbParent
 id rectangles
 id registerForm
-id registerLayout
 id registerSection
 id report_drawn
 id reverseSawtooth
@@ -3683,7 +3691,6 @@ id textinput_suffix_text
 id time
 id title
 id titleDividerNoCustom
-id titleLayout
 id title_template
 id toggle
 id top
@@ -3701,6 +3708,7 @@ id tvChildNameLabel
 id tvChildrenCount
 id tvCurrentStatus
 id tvDashboardTitle
+id tvDescription
 id tvForgotPassword
 id tvGoLogin
 id tvGoRegister
@@ -3709,12 +3717,9 @@ id tvLogout
 id tvMainTitle
 id tvProfileInitial
 id tvRegisterLink
-id tvSlogan
 id tvStatusInfo
-id tvSubtitle
-id tvSummary
+id tvSubtitle1
 id tvTotalScreenTime
-id tvWelcome
 id unchecked
 id uniform
 id unlabeled

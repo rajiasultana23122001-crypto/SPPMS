@@ -1,11 +1,13 @@
 package com.example.sppms
 
 import android.content.Intent
-import android.graphics.Color
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -13,9 +15,19 @@ class ParentDashboardActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        sharedPreferences = getSharedPreferences("Settings", MODE_PRIVATE)
+        val isDarkMode = sharedPreferences.getBoolean("DarkMode", false)
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        
         setContentView(R.layout.activity_parent_dashboard)
 
         auth = FirebaseAuth.getInstance()
@@ -24,6 +36,7 @@ class ParentDashboardActivity : AppCompatActivity() {
         setupProfileHeader()
         setupClickListeners()
         loadChildrenCount()
+        setupDarkModeSwitch()
     }
 
     private fun setupProfileHeader() {
@@ -56,8 +69,22 @@ class ParentDashboardActivity : AppCompatActivity() {
             }
     }
 
+    private fun setupDarkModeSwitch() {
+        val switchDarkMode = findViewById<SwitchMaterial>(R.id.switchDarkMode)
+        val isDarkMode = sharedPreferences.getBoolean("DarkMode", false)
+        switchDarkMode.isChecked = isDarkMode
+
+        switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            sharedPreferences.edit().putBoolean("DarkMode", isChecked).apply()
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+    }
+
     private fun setupClickListeners() {
-        // Updated to use correct IDs from redesigned dashboard
         findViewById<View>(R.id.cardScreenTime)?.setOnClickListener {
             startActivity(Intent(this, ScreenTimeActivity::class.java))
         }

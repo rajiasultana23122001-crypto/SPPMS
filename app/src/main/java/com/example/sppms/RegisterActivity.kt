@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -14,6 +15,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -70,26 +72,31 @@ class RegisterActivity : AppCompatActivity() {
         rbParent.setBackgroundResource(R.drawable.bg_chip_purple)
         rbChild.setBackgroundResource(R.drawable.bg_chip_purple)
 
+        val primaryColor = ContextCompat.getColor(this, R.color.primary_purple)
+        val lightBgColor = ContextCompat.getColor(this, R.color.bg_purple_light)
+        val textColorDark = ContextCompat.getColor(this, R.color.text_dark)
+
         radioGroupRole.setOnCheckedChangeListener { _, checkedId ->
             if (checkedId == rbParent.id) {
                 parentLayout.visibility = View.VISIBLE
                 childLayout.visibility = View.GONE
-                rbParent.backgroundTintList = android.content.res.ColorStateList.valueOf(Color.parseColor("#7E57C2"))
+                rbParent.backgroundTintList = android.content.res.ColorStateList.valueOf(primaryColor)
                 rbParent.setTextColor(Color.WHITE)
-                rbChild.backgroundTintList = android.content.res.ColorStateList.valueOf(Color.parseColor("#F8F7FF"))
-                rbChild.setTextColor(Color.parseColor("#1A1A2E"))
+                rbChild.backgroundTintList = android.content.res.ColorStateList.valueOf(lightBgColor)
+                rbChild.setTextColor(textColorDark)
             } else if (checkedId == rbChild.id) {
                 parentLayout.visibility = View.GONE
                 childLayout.visibility = View.VISIBLE
-                rbChild.backgroundTintList = android.content.res.ColorStateList.valueOf(Color.parseColor("#7E57C2"))
+                rbChild.backgroundTintList = android.content.res.ColorStateList.valueOf(primaryColor)
                 rbChild.setTextColor(Color.WHITE)
-                rbParent.backgroundTintList = android.content.res.ColorStateList.valueOf(Color.parseColor("#F8F7FF"))
-                rbParent.setTextColor(Color.parseColor("#1A1A2E"))
+                rbParent.backgroundTintList = android.content.res.ColorStateList.valueOf(lightBgColor)
+                rbParent.setTextColor(textColorDark)
             }
         }
 
         tvGoLogin.setOnClickListener {
-            finish() // Go back to login
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
 
         btnGoogleRegister.setOnClickListener {
@@ -171,7 +178,14 @@ class RegisterActivity : AppCompatActivity() {
                     db.collection("users").document(user.uid).get()
                         .addOnSuccessListener { doc ->
                             if (doc.exists()) {
-                                navigateToDashboard(doc.getString("role") ?: "parent")
+                                Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show()
+                                val role = doc.getString("role")
+                                if (role == "parent") {
+                                    startActivity(Intent(this, ParentDashboardActivity::class.java))
+                                } else {
+                                    startActivity(Intent(this, ChildDashboardActivity::class.java))
+                                }
+                                finish()
                             } else {
                                 findViewById<EditText>(R.id.etName).setText(user.displayName)
                                 findViewById<EditText>(R.id.etEmail).setText(user.email)
@@ -199,21 +213,15 @@ class RegisterActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show()
                 auth.signOut() 
+                startActivity(Intent(this, LoginActivity::class.java).apply {
+                    putExtra("fromRegister", true)
+                    putExtra("registeredEmail", email)
+                })
                 finish()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Failed to save profile: ${e.message}", Toast.LENGTH_LONG).show()
                 findViewById<Button>(R.id.btnRegisterNow).isEnabled = true
             }
-    }
-
-    private fun navigateToDashboard(role: String) {
-        val intent = if (role == "parent") {
-            Intent(this, ParentDashboardActivity::class.java)
-        } else {
-            Intent(this, ChildDashboardActivity::class.java)
-        }
-        startActivity(intent)
-        finish()
     }
 }

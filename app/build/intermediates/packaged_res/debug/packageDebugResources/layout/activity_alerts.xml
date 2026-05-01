@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F7FF"
+    android:background="@color/bg_purple_light"
     android:fillViewport="true">
 
     <LinearLayout
@@ -14,7 +16,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="#E8E2FF"
+            android:background="@color/primary_light_purple"
             android:padding="20dp">
 
             <ImageView
@@ -34,7 +36,7 @@
                 android:text="Activity Alerts"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:textColor="#1A1A2E"
+                android:textColor="@color/text_dark"
                 android:layout_toEndOf="@id/btnBack"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="14dp" />
@@ -60,14 +62,14 @@
                         android:layout_height="wrap_content"
                         android:text="Logout"
                         android:textStyle="bold"
-                        android:textColor="#1A1A2E"
+                        android:textColor="@color/text_dark"
                         android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay in control"
-                        android:textColor="#666666"
+                        android:textColor="@color/text_gray_medium"
                         android:textSize="11sp" />
                 </LinearLayout>
 
@@ -75,7 +77,7 @@
                     android:layout_width="42dp"
                     android:layout_height="42dp"
                     android:background="@drawable/card_background"
-                    android:backgroundTint="#7E57C2"
+                    android:backgroundTint="@color/primary_purple"
                     android:text="P"
                     android:textColor="#FFFFFF"
                     android:gravity="center"
@@ -105,8 +107,7 @@
                 <TextView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/card_background"
-                    android:backgroundTint="#FFF0F0"
+                    android:background="@drawable/bg_circle_purple_light"
                     android:text="🔔"
                     android:gravity="center"
                     android:textSize="22sp" />
@@ -116,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="Get notified when your child exceeds\ntheir daily reels or screen time limits."
-                    android:textColor="#555555"
+                    android:textColor="@color/text_gray_medium"
                     android:textSize="14sp" />
             </LinearLayout>
 

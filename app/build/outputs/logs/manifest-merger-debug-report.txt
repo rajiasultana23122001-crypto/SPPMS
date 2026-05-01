@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:2:1-78:12
-INJECTED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:2:1-78:12
-INJECTED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:2:1-78:12
-INJECTED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:2:1-78:12
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:2:1-79:12
+INJECTED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:2:1-79:12
+INJECTED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:2:1-79:12
+INJECTED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:2:1-79:12
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\ASUS\.gradle\caches\9.3.1\transforms\1586b1c815edfe7b765971743a32acb3\workspace\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\ASUS\.gradle\caches\9.3.1\transforms\79aec7904054e479b728e80046ae5de3\workspace\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\ASUS\.gradle\caches\9.3.1\transforms\0e4cb6f44c66801b55f846e8cd0240ce\workspace\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
@@ -145,8 +145,8 @@ ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidM
 	android:name
 		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:17:22-82
 application
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:19:5-76:19
-INJECTED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:19:5-76:19
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:19:5-77:19
+INJECTED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:19:5-77:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\ASUS\.gradle\caches\9.3.1\transforms\1586b1c815edfe7b765971743a32acb3\workspace\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\ASUS\.gradle\caches\9.3.1\transforms\1586b1c815edfe7b765971743a32acb3\workspace\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\ASUS\.gradle\caches\9.3.1\transforms\79aec7904054e479b728e80046ae5de3\workspace\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -198,127 +198,129 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\AS
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.12.0] C:\Users\ASUS\.gradle\caches\9.3.1\transforms\d493af9ad03cab36017f46f61e1996df\workspace\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:24:9-35
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:25:9-35
 	android:label
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:22:9-41
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:23:9-41
 	android:roundIcon
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:23:9-54
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:24:9-54
 	android:icon
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:21:9-43
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:22:9-43
 	android:allowBackup
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:20:9-35
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:21:9-35
 	android:theme
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:25:9-47
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:26:9-47
+	android:name
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:20:9-41
 activity#com.example.sppms.MainActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:27:9-34:20
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:28:9-35:20
 	android:exported
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:29:13-36
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:30:13-36
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:28:13-41
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:29:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:30:13-33:29
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:31:13-34:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:31:17-69
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:32:17-69
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:31:25-66
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:32:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:32:17-77
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:33:17-77
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:32:27-74
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:33:27-74
 activity#com.example.sppms.LoginActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:36:9-51
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:37:9-51
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:36:19-48
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:37:19-48
 activity#com.example.sppms.RegisterActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:37:9-54
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:38:9-54
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:37:19-51
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:38:19-51
 activity#com.example.sppms.ParentDashboardActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:38:9-61
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:39:9-61
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:38:19-58
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:39:19-58
 activity#com.example.sppms.ChildDashboardActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:39:9-60
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:40:9-60
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:39:19-57
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:40:19-57
 activity#com.example.sppms.ChildrenActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:40:9-54
-	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:40:19-51
-activity#com.example.sppms.AppUsageActivity
 ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:41:9-54
 	android:name
 		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:41:19-51
+activity#com.example.sppms.AppUsageActivity
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:42:9-54
+	android:name
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:42:19-51
 activity#com.example.sppms.ScreenTimeActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:42:9-56
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:43:9-56
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:42:19-53
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:43:19-53
 activity#com.example.sppms.Last24HourHistoryActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:43:9-63
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:44:9-63
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:43:19-60
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:44:19-60
 activity#com.example.sppms.LocationActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:44:9-54
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:45:9-54
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:44:19-51
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:45:19-51
 activity#com.example.sppms.AlertsActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:45:9-52
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:46:9-52
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:45:19-49
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:46:19-49
 activity#com.example.sppms.ChildLocationMapActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:46:9-62
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:47:9-62
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:46:19-59
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:47:19-59
 activity#com.example.sppms.ReelsActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:47:9-51
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:48:9-51
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:47:19-48
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:48:19-48
 activity#com.example.sppms.OthersAppActivity
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:48:9-55
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:49:9-55
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:48:19-52
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:49:19-52
 service#com.example.sppms.YouTubeMonitorService
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:50:9-60:19
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:51:9-61:19
 	android:exported
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:52:13-36
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:53:13-36
 	android:permission
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:53:13-79
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:54:13-79
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:51:13-50
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:52:13-50
 intent-filter#action:name:android.accessibilityservice.AccessibilityService
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:54:13-56:29
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:55:13-57:29
 action#android.accessibilityservice.AccessibilityService
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:55:17-92
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:56:17-92
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:55:25-89
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:56:25-89
 meta-data#android.accessibilityservice
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:57:13-59:72
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:58:13-60:72
 	android:resource
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:59:17-69
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:60:17-69
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:58:17-60
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:59:17-60
 service#com.example.sppms.MyNotificationListener
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:62:9-70:19
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:63:9-71:19
 	android:label
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:66:13-58
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:67:13-58
 	android:exported
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:65:13-36
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:66:13-36
 	android:permission
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:64:13-87
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:65:13-90
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:63:13-51
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:64:13-51
 intent-filter#action:name:android.service.notification.NotificationListenerService
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:67:13-69:29
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:68:13-70:29
 action#android.service.notification.NotificationListenerService
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:68:17-99
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:69:17-99
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:68:25-96
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:69:25-96
 meta-data#com.google.android.geo.API_KEY
-ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:72:9-74:56
+ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:73:9-75:56
 	android:value
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:74:13-53
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:75:13-53
 	android:name
-		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:73:13-58
+		ADDED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml:74:13-58
 uses-sdk
 INJECTED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\ASUS\Downloads\SPPMS_Fixed\SPPMS_fixed\app\src\main\AndroidManifest.xml

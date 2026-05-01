@@ -5,7 +5,7 @@
     android:id="@+id/rootScroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F7FF"
+    android:background="@color/bg_purple_light"
     android:fillViewport="true">
 
     <LinearLayout
@@ -17,7 +17,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="#E8E2FF"
+            android:background="@color/primary_light_purple"
             android:padding="20dp">
 
             <TextView
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Parental Care"
-                android:textColor="#1A1A2E"
+                android:textColor="@color/text_dark"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvDashboardTitle"
                 android:text="Monitor. Protect. Grow Together."
-                android:textColor="#666666"
+                android:textColor="@color/text_gray_medium"
                 android:textSize="12sp" />
 
             <!-- Profile & Logout area -->
@@ -60,14 +60,14 @@
                         android:layout_height="wrap_content"
                         android:text="Logout"
                         android:textStyle="bold"
-                        android:textColor="#1A1A2E"
+                        android:textColor="@color/text_dark"
                         android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay in control"
-                        android:textColor="#666666"
+                        android:textColor="@color/text_gray_medium"
                         android:textSize="11sp" />
                 </LinearLayout>
 
@@ -76,7 +76,7 @@
                     android:layout_width="42dp"
                     android:layout_height="42dp"
                     android:background="@drawable/bg_circle_purple"
-                    android:backgroundTint="#7E57C2"
+                    android:backgroundTint="@color/primary_purple"
                     android:text="P"
                     android:textColor="#FFFFFF"
                     android:gravity="center"
@@ -121,7 +121,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Your Children"
-                        android:textColor="#1A1A2E"
+                        android:textColor="@color/text_dark"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -130,12 +130,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Loading children..."
-                        android:textColor="#666666"
+                        android:textColor="@color/text_gray_medium"
                         android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Feature Grid (using rows for simplicity) -->
+            <!-- Feature Grid -->
 
             <!-- Row 1 -->
             <LinearLayout
@@ -156,7 +156,7 @@
                     android:orientation="vertical"
                     android:padding="12dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⏰" android:textSize="24sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Screen Time" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Screen Time" android:textColor="@color/text_dark" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -171,7 +171,7 @@
                     android:orientation="vertical"
                     android:padding="12dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📍" android:textSize="24sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Location" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Location" android:textColor="@color/text_dark" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -194,7 +194,7 @@
                     android:orientation="vertical"
                     android:padding="12dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="▶️" android:textSize="24sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="YouTube" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="YouTube" android:textColor="@color/text_dark" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -209,7 +209,7 @@
                     android:orientation="vertical"
                     android:padding="12dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎞️" android:textSize="24sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reels" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reels" android:textColor="@color/text_dark" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -232,7 +232,7 @@
                     android:orientation="vertical"
                     android:padding="12dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔔" android:textSize="24sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Alerts" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Alerts" android:textColor="@color/text_dark" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -247,7 +247,7 @@
                     android:orientation="vertical"
                     android:padding="12dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📊" android:textSize="24sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Others App" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Others App" android:textColor="@color/text_dark" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -270,7 +270,7 @@
                     android:orientation="vertical"
                     android:padding="12dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🕒" android:textSize="24sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Graph History" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Graph History" android:textColor="@color/text_dark" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -285,7 +285,7 @@
                     android:orientation="vertical"
                     android:padding="12dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="➕" android:textSize="24sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Manage" android:textColor="#1A1A2E" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Manage" android:textColor="@color/text_dark" android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="8dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -296,7 +296,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/background_white">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -304,8 +305,11 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌙" android:textSize="20sp" />
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="16dp" android:text="Dark Mode" android:textColor="#1A1A2E" android:textSize="16sp" android:textStyle="bold" />
-                    <Switch android:id="@+id/switchDarkMode" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="16dp" android:text="Dark Mode" android:textColor="@color/text_dark" android:textSize="16sp" android:textStyle="bold" />
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchDarkMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

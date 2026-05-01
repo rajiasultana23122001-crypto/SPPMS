@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="background_white">#FFFFFF</color>
+    <color name="bg_purple_light">#F8F7FF</color>
+    <color name="bg_purple_very_light">#F5F3FF</color>
     <color name="black">#FF000000</color>
+    <color name="divider_color">#EEEEEE</color>
+    <color name="primary_dark_purple">#3E1F92</color>
+    <color name="primary_light_purple">#F0EAFF</color>
+    <color name="primary_purple">#7E57C2</color>
+    <color name="text_dark">#1A1A2E</color>
+    <color name="text_gray_dark">#424242</color>
+    <color name="text_gray_light">#888888</color>
+    <color name="text_gray_medium">#666666</color>
     <color name="white">#FFFFFFFF</color>
     <string name="accessibility_service_description">Parentral monitors YouTube activity to help parents track their child\'s video viewing habits.</string>
     <string name="app_name">Parentral</string>
@@ -12,6 +23,10 @@
     <string name="google_storage_bucket" translatable="false">sppms2-9e2fb.firebasestorage.app</string>
     <string name="project_id" translatable="false">sppms2-9e2fb</string>
     <style name="Base.Theme.Parentral" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_purple</item>
+        <item name="android:windowBackground">@color/background_white</item>
+        <item name="android:statusBarColor">@color/background_white</item>
+        <item name="android:windowLightStatusBar" ns1:targetApi="m">true</item>
     </style>
     <style name="Theme.Parentral" parent="Base.Theme.Parentral"/>
 </resources>
